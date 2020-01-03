@@ -3,7 +3,7 @@ import StyledButton from './StyledButton'
 
 
 const Button = (props) => {
-    return <StyledButton onClick={props.onClick}>Submit</StyledButton>
+    return <StyledButton onClick={props.onClick} disabled={props.disabled}>Submit</StyledButton>
 } 
 
 

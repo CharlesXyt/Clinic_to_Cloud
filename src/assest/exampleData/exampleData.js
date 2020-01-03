@@ -8,6 +8,8 @@ const bmiReferenceProps = {
         type: 'textInput',
         display: true,
         isRequired: true,
+        value:"",
+        valid:false
       },
       {
         id: 'gender',
@@ -29,6 +31,8 @@ const bmiReferenceProps = {
         ],
         display: true,
         isRequired: false,
+        value:"Male",
+        valid:true
       },
       {
         id: 'weight',
@@ -40,6 +44,8 @@ const bmiReferenceProps = {
         },
         display: true,
         isRequired: true,
+        value:"",
+        valid:false
       },
       {
         id: 'height',
@@ -51,6 +57,8 @@ const bmiReferenceProps = {
         },
         display: true,
         isRequired: true,
+        value:"",
+        valid:false
       },
       {
         id: 'bmi',
@@ -62,6 +70,8 @@ const bmiReferenceProps = {
         },
         display: false,
         isRequired: false,
+        value:"",
+        valid:false
       },
     ],
   };
@@ -76,6 +86,8 @@ const bmiReferenceProps = {
         type: 'textInput',
         display: true,
         isRequired: true,
+        value:"",
+        valid:false
       },
       {
         id: 'gender',
@@ -97,6 +109,8 @@ const bmiReferenceProps = {
         ],
         display: true,
         isRequired: false,
+        value:"Male",
+        valid:true
       },
       {
         id: 'head-circumference',
@@ -108,6 +122,8 @@ const bmiReferenceProps = {
         },
         display: true,
         isRequired: true,
+        value:"",
+        valid:false
       },
     ],
   };

@@ -6,12 +6,12 @@ const input = (props) => {
     let inputElement = null
     switch(props.type){
         case 'textInput':
-            inputElement = <StyledInput required={props.isRequired}></StyledInput>
+            inputElement = <StyledInput type="text" required={props.isRequired} onChange={props.changed} value={props.value}></StyledInput>
             break
         case 'select':
-            const defaultOption = props.options.filter((el) => {return el.isDefault}).name
+            const defaultOption = props.options.filter((el) => {return el.isDefault})[0].name
             inputElement = (
-                <StyledSelect value={defaultOption} required={props.isRequired}>
+                <StyledSelect value={props.value ? props.value : defaultOption} onChange={props.changed} required={props.isRequired}>
                     {props.options.map(el => {
                         return (
                             <option 
@@ -23,10 +23,10 @@ const input = (props) => {
             )
             break
         case 'numberInput':
-            inputElement = <StyledInput required={props.isRequired}></StyledInput>
+            inputElement = <StyledInput type="number" value={props.value} onChange={props.changed} required={props.isRequired}></StyledInput>
             break
         default:
-            inputElement = <StyledInput required={props.isRequired}></StyledInput>
+            inputElement = <StyledInput value={props.value} onChange={props.changed} required={props.isRequired}></StyledInput>
     }
 
     return (
