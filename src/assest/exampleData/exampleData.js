@@ -71,7 +71,7 @@ const bmiReferenceProps = {
         display: false,
         isRequired: false,
         value:"",
-        valid:false
+        valid:true
       },
     ],
   };

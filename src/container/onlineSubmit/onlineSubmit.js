@@ -12,21 +12,34 @@ class OnlineSubmit extends React.Component{
             bmiProps:bmiReferenceProps,
             headProps:headCircumferenceReferenceProps,
             bmiPropsDisable:true,
-            headPropsDisable:true
+            headPropsDisable:true,
+            bmiIndex:null
         }
     }
 
     buttonOnClick = (type) => {
         const formValues = this.state[type].dataElements.map((el) => {return {[el.id]:el.value}})
         const result = Object.assign(...formValues)
+        if(type === "bmiProps"){
+            const newBmiIndex = parseFloat(result.weight) / (parseFloat(result.height) * parseFloat(result.height) ) * 10000
+            this.setState({
+                bmiIndex: newBmiIndex.toFixed(2)
+            })
+            result.bmi = newBmiIndex.toFixed(2)
+        }
         console.log(result)
     }
 
 
-    checkValidity = (element) => {
+    checkValidity = (element,changedValue) => {
         let valid= true
         if(element.bounds){
-            valid = element.value < element.bounds.upperLimit && valid
+            if(element.bounds.upperLimit){
+                valid = changedValue < element.bounds.upperLimit && valid
+            }
+            if(element.bounds.lowerLimit){
+                valid = changedValue > element.bounds.lowerLimit && valid
+            }
         }
         return valid
     }
@@ -39,7 +52,7 @@ class OnlineSubmit extends React.Component{
                 return {
                     ...el,
                     value:changedValue,
-                    valid:this.checkValidity(el)
+                    valid:this.checkValidity(el,changedValue)
                 }
             }else{
                 return {
@@ -75,6 +88,7 @@ class OnlineSubmit extends React.Component{
             <Form> 
                 <FormElement>
                     {formBmi}
+                    {this.state.bmiIndex ? <p>BMI: {this.state.bmiIndex}</p> : null}
                     <Button disabled={this.state.bmiPropsDisable} onClick={() => this.buttonOnClick("bmiProps")}/>
                 </FormElement>
                 <FormElement>

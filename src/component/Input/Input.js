@@ -29,11 +29,14 @@ const input = (props) => {
             inputElement = <StyledInput value={props.value} onChange={props.changed} required={props.isRequired}></StyledInput>
     }
 
+    const result = props.display ? (<div>
+                        <StyledLabel>{props.displayName}</StyledLabel>
+                        {inputElement}
+                        <span>{props.unitOfMeasure}</span>
+                    </div>) : null
     return (
         <div>
-            <StyledLabel>{props.displayName}</StyledLabel>
-            {inputElement}
-            <span>{props.unitOfMeasure}</span>
+            {result}
         </div>
     )
 
