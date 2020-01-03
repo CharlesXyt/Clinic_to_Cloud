@@ -1,35 +1,39 @@
 import React from 'react'
-import {StyledInput,StyledSelect} from './StyledInputs'
+import {StyledInput,StyledSelect,StyledLabel} from './StyledInputs'
 
 
 const input = (props) => {
     let inputElement = null
     switch(props.type){
         case 'textInput':
-            inputElement = <StyledInput></StyledInput>
+            inputElement = <StyledInput required={props.isRequired}></StyledInput>
             break
         case 'select':
+            const defaultOption = props.options.filter((el) => {return el.isDefault}).name
             inputElement = (
-                <StyledSelect>
+                <StyledSelect value={defaultOption} required={props.isRequired}>
                     {props.options.map(el => {
                         return (
                             <option 
                                 key={el.name + "_"+ el.id} 
-                                value={el.name} 
-                                selected={el.isDefault ? 'selected' : ''}
+                                value={el.name}
                             >{el.name}</option>
-                        )
-                    })}
+                    )})}
                 </StyledSelect>
             )
             break
+        case 'numberInput':
+            inputElement = <StyledInput required={props.isRequired}></StyledInput>
+            break
         default:
-            inputElement = <StyledInput></StyledInput>
+            inputElement = <StyledInput required={props.isRequired}></StyledInput>
     }
 
     return (
         <div>
+            <StyledLabel>{props.displayName}</StyledLabel>
             {inputElement}
+            <span>{props.unitOfMeasure}</span>
         </div>
     )
 

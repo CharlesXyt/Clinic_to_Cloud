@@ -10,7 +10,6 @@ class OnlineSubmit extends React.Component{
         this.state={
             bmiProps:bmiReferenceProps,
             headProps:headCircumferenceReferenceProps
-
         }
     }
 
@@ -20,10 +19,20 @@ class OnlineSubmit extends React.Component{
 
     render(){
  
-
+        const formBmi = this.state.bmiProps.dataElements.map((el) => {
+            return (
+                <InputElement key={el.id} {...el}/>
+            )
+        })
+        const formHead = this.state.headProps.dataElements.map((el) => {
+            return (
+                <InputElement key={el.id} {...el}/>
+            )
+        })
         return(
             <div>
-                <InputElement {...this.state.bmiProps.dataElements[1]}/>
+                {formBmi}
+                {formHead}
                 <Button onClick={this.buttonOnClick}/>
             </div>
         )
