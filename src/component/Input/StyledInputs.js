@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
-const StyleInput = styled.input`
+const StyledInput = styled.input`
 
 `
 
-const StyleSelect = styled.select`
+const StyledSelect = styled.select`
 
 `
 
 export {
-    StyleInput,
-    StyleSelect
+    StyledInput,
+    StyledSelect
 }

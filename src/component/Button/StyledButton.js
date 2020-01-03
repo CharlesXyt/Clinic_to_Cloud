@@ -6,6 +6,7 @@ const StyledButton = styled.button`
     width:50px;
     height:30px;
     font-size:10px;
+    background-color:green;
 `
 
-export {StyledButton};
+export default StyledButton;
