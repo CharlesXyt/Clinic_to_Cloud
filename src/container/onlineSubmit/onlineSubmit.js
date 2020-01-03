@@ -13,11 +13,17 @@ class OnlineSubmit extends React.Component{
             headProps:headCircumferenceReferenceProps,
             bmiPropsDisable:true,
             headPropsDisable:true,
-            bmiIndex:null
+            bmiIndex:null,
+            bmiPropsFirstTimeLoading:true,
+            headPropsFirstTimeLoading:true
         }
     }
 
     componentDidMount(){
+        this.setState({
+            bmiPropsFirstTimeLoading:true,
+            headPropsfirstTimeLoading:true
+        })
     }
 
     buttonOnClick = (type) => {
@@ -26,11 +32,18 @@ class OnlineSubmit extends React.Component{
         if(type === "bmiProps"){
             const newBmiIndex = parseFloat(result.weight) / (parseFloat(result.height) * parseFloat(result.height) ) * 10000
             this.setState({
-                bmiIndex: newBmiIndex.toFixed(1)
+                bmiIndex: newBmiIndex.toFixed(1),
+                bmiPropsFirstTimeLoading:true,
             })
             result.bmi = newBmiIndex.toFixed(1)
         }
+        if(type === "headProps"){
+            this.setState({
+                headPropsFirstTimeLoading:true
+            })
+        }
         console.log(result)
+        
     }
 
 
@@ -40,7 +53,7 @@ class OnlineSubmit extends React.Component{
             if(element.bounds.upperLimit){
                 valid = changedValue < element.bounds.upperLimit && valid
             }
-            if(element.bounds.lowerLimit){
+            if(element.bounds.lowerLimit===0 || element.bounds.lowerLimit ){
                 valid = changedValue > element.bounds.lowerLimit && valid
             }
         }
@@ -72,23 +85,25 @@ class OnlineSubmit extends React.Component{
             dataElements:newDataElements
         }
         const disableType = formType + "Disable"
+        const firstLoading = formType + "FirstTimeLoading"
         const isDisable = newDataElements.filter((el) => ! el.valid).length > 0 ? true : false
         this.setState({
             ...this.state,
             [formType]:newPropState,
             [disableType]:isDisable,
+            [firstLoading]:false
         })
     }
 
     render(){
         const formBmi = this.state.bmiProps.dataElements.map((el) => {
             return (
-                <InputElement changed={(event) => this.inputChangeHandler(event,el.id,"bmiProps")} key={el.id} {...el}/>
+                <InputElement firstTime={this.state.bmiPropsFirstTimeLoading} changed={(event) => this.inputChangeHandler(event,el.id,"bmiProps")} key={el.id} {...el}/>
             )
         })
         const formHead = this.state.headProps.dataElements.map((el) => {
             return (
-                <InputElement changed={(event) => this.inputChangeHandler(event,el.id,"headProps")} key={el.id} {...el}/>
+                <InputElement firstTime={this.state.headPropsFirstTimeLoading} changed={(event) => this.inputChangeHandler(event,el.id,"headProps")} key={el.id} {...el}/>
             )
         })
         return(

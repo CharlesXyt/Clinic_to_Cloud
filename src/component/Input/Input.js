@@ -33,7 +33,7 @@ const input = (props) => {
                         <StyledLabel>{props.displayName}</StyledLabel>
                         {inputElement}
                         <span style={{fontSize:"16px"}}>{props.unitOfMeasure}</span>
-                        <ErrorMessage>{!props.valid ? props.message : null}</ErrorMessage>
+                        <ErrorMessage>{!props.valid && !props.firstTime ? props.message : null}</ErrorMessage>
                     </div>) : null
     return (
         <div>

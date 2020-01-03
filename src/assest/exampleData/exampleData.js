@@ -42,6 +42,7 @@ const bmiReferenceProps = {
         type: 'numberInput',
         bounds: {
           upperLimit: 1000,
+          lowerLimit:0
         },
         display: true,
         isRequired: true,
@@ -56,6 +57,7 @@ const bmiReferenceProps = {
         type: 'numberInput',
         bounds: {
           upperLimit: 300,
+          lowerLimit:0
         },
         display: true,
         isRequired: true,
@@ -70,6 +72,7 @@ const bmiReferenceProps = {
         type: 'numberInput',
         bounds: {
           upperLimit: 100,
+          lowerLimit:0
         },
         display: false,
         isRequired: false,
@@ -123,6 +126,7 @@ const bmiReferenceProps = {
         type: 'numberInput',
         bounds: {
           upperLimit: 1000,
+          lowerLimit:0
         },
         display: true,
         isRequired: true,
