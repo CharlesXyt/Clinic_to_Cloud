@@ -2,6 +2,7 @@ import React from 'react'
 import  {bmiReferenceProps,headCircumferenceReferenceProps} from '../../assest/exampleData/exampleData'
 import InputElement from '../../component/Input/Input'
 import Button from '../../component/Button/Button'
+import {Form,FormElement} from './StyledForm'
 
 class OnlineSubmit extends React.Component{
 
@@ -71,16 +72,16 @@ class OnlineSubmit extends React.Component{
             )
         })
         return(
-            <div> 
-                <div>
+            <Form> 
+                <FormElement>
                     {formBmi}
                     <Button disabled={this.state.bmiPropsDisable} onClick={() => this.buttonOnClick("bmiProps")}/>
-                </div>
-                <div>
+                </FormElement>
+                <FormElement>
                     {formHead}
                     <Button disabled={this.state.headPropsDisable} onClick={() => this.buttonOnClick("headProps")}/>
-                </div>
-            </div>
+                </FormElement>
+            </Form>
         )
     }
 }

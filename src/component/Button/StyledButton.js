@@ -7,6 +7,7 @@ const StyledButton = styled.button`
     height:30px;
     font-size:10px;
     background-color:green;
+    margin-top:20px
 `
 
 export default StyledButton;
