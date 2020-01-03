@@ -6,7 +6,7 @@ const input = (props) => {
     let inputElement = null
     switch(props.type){
         case 'textInput':
-            inputElement = <StyledInput type="text" required={props.isRequired} onChange={props.changed} value={props.value}></StyledInput>
+            inputElement = <StyledInput placeholder={props.displayName} type="text" required={props.isRequired} onChange={props.changed} value={props.value}></StyledInput>
             break
         case 'select':
             const defaultOption = props.options.filter((el) => {return el.isDefault})[0].name
@@ -23,16 +23,16 @@ const input = (props) => {
             )
             break
         case 'numberInput':
-            inputElement = <StyledInput type="number" value={props.value} onChange={props.changed} required={props.isRequired}></StyledInput>
+            inputElement = <StyledInput placeholder={props.displayName} type="number" value={props.value} onChange={props.changed} required={props.isRequired}></StyledInput>
             break
         default:
-            inputElement = <StyledInput value={props.value} onChange={props.changed} required={props.isRequired}></StyledInput>
+            inputElement = <StyledInput placeholder={props.displayName} value={props.value} onChange={props.changed} required={props.isRequired}></StyledInput>
     }
 
-    const result = props.display ? (<div>
+    const result = props.display ? (<div style={{marginBottom:"5px"}}>
                         <StyledLabel>{props.displayName}</StyledLabel>
                         {inputElement}
-                        <span>{props.unitOfMeasure}</span>
+                        <span style={{fontSize:"16px"}}>{props.unitOfMeasure}</span>
                     </div>) : null
     return (
         <div>

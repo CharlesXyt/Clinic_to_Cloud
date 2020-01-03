@@ -23,9 +23,9 @@ class OnlineSubmit extends React.Component{
         if(type === "bmiProps"){
             const newBmiIndex = parseFloat(result.weight) / (parseFloat(result.height) * parseFloat(result.height) ) * 10000
             this.setState({
-                bmiIndex: newBmiIndex.toFixed(2)
+                bmiIndex: newBmiIndex.toFixed(1)
             })
-            result.bmi = newBmiIndex.toFixed(2)
+            result.bmi = newBmiIndex.toFixed(1)
         }
         console.log(result)
     }
@@ -40,6 +40,10 @@ class OnlineSubmit extends React.Component{
             if(element.bounds.lowerLimit){
                 valid = changedValue > element.bounds.lowerLimit && valid
             }
+        }
+        if(element.id === "name"){
+            const re = /[A-Za-z]+\s+[A-Za-z]+/
+            return re.test(changedValue)
         }
         return valid
     }
@@ -88,7 +92,7 @@ class OnlineSubmit extends React.Component{
             <Form> 
                 <FormElement>
                     {formBmi}
-                    {this.state.bmiIndex ? <p>BMI: {this.state.bmiIndex}</p> : null}
+                    {this.state.bmiIndex ? <p>BMI: <span style={{fontSize:"16px",}}><strong>{this.state.bmiIndex + " kg/m2" }</strong></span></p> : null}
                     <Button disabled={this.state.bmiPropsDisable} onClick={() => this.buttonOnClick("bmiProps")}/>
                 </FormElement>
                 <FormElement>

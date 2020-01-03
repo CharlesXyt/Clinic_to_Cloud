@@ -11,8 +11,12 @@ const FormElement = styled.div`
     margin:20px auto;
     box-shadow: 0 2px 3px #ccc;
     border: 1px solid #eee;
-    padding: 10px;
+    padding: 2% 3%;
     box-sizing: border-box;
+    display:flex;
+    width:30%;
+    flex-flow:column nowrap;
+    justify-content:center;
 `
 
 
