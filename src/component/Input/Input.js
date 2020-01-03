@@ -4,6 +4,8 @@ import {StyledInput,StyledSelect,StyledLabel,ErrorMessage} from './StyledInputs'
 
 const input = (props) => {
     let inputElement = null
+
+    //according to the type, return the inputElement
     switch(props.type){
         case 'textInput':
             inputElement = <StyledInput placeholder={props.displayName} type="text" required={props.isRequired} onChange={props.changed} value={props.value}></StyledInput>
@@ -29,6 +31,7 @@ const input = (props) => {
             inputElement = <StyledInput placeholder={props.displayName} value={props.value} onChange={props.changed} required={props.isRequired}></StyledInput>
     }
 
+    //decide if it needs to be displayed
     const result = props.display ? (<div style={{marginBottom:"5px"}}>
                         <StyledLabel>{props.displayName}</StyledLabel>
                         {inputElement}

@@ -26,6 +26,7 @@ class OnlineSubmit extends React.Component{
         })
     }
 
+    //after clicking the button, log the results and set the bmi value
     buttonOnClick = (type) => {
         const formValues = this.state[type].dataElements.map((el) => {return {[el.id]:el.value}})
         const result = Object.assign(...formValues)
@@ -46,7 +47,7 @@ class OnlineSubmit extends React.Component{
         
     }
 
-
+    //check the element if it satisfies the requirements
     checkValidity = (element,changedValue) => {
         let valid= true
         if(element.bounds){
@@ -64,6 +65,7 @@ class OnlineSubmit extends React.Component{
         return valid
     }
 
+    //handle the input change
     inputChangeHandler = (event,typeId,formType) => {
         const changedValue = event.target.value
         const newProps = {...this.state[formType]}
