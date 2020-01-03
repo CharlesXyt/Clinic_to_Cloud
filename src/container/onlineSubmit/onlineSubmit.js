@@ -17,6 +17,9 @@ class OnlineSubmit extends React.Component{
         }
     }
 
+    componentDidMount(){
+    }
+
     buttonOnClick = (type) => {
         const formValues = this.state[type].dataElements.map((el) => {return {[el.id]:el.value}})
         const result = Object.assign(...formValues)
@@ -73,7 +76,7 @@ class OnlineSubmit extends React.Component{
         this.setState({
             ...this.state,
             [formType]:newPropState,
-            [disableType]:isDisable
+            [disableType]:isDisable,
         })
     }
 

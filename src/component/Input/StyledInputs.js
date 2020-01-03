@@ -36,8 +36,14 @@ const StyledSelect = styled.select`
     font-size: 16px;
 `
 
+const ErrorMessage = styled.p`
+    font-size:10px;
+    color:red
+`
+
 export {
     StyledInput,
     StyledSelect,
-    StyledLabel
+    StyledLabel,
+    ErrorMessage
 }

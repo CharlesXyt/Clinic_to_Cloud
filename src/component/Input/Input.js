@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyledInput,StyledSelect,StyledLabel} from './StyledInputs'
+import {StyledInput,StyledSelect,StyledLabel,ErrorMessage} from './StyledInputs'
 
 
 const input = (props) => {
@@ -33,6 +33,7 @@ const input = (props) => {
                         <StyledLabel>{props.displayName}</StyledLabel>
                         {inputElement}
                         <span style={{fontSize:"16px"}}>{props.unitOfMeasure}</span>
+                        <ErrorMessage>{!props.valid ? props.message : null}</ErrorMessage>
                     </div>) : null
     return (
         <div>
