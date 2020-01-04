@@ -10,7 +10,7 @@ const bmiReferenceProps = {
         isRequired: true,
         value:"",
         valid:false,
-        message:"need to input a first and last name (separated by a space)."
+        message:"*need to input a first and last name (separated by a space)."
       },
       {
         id: 'gender',
@@ -48,7 +48,7 @@ const bmiReferenceProps = {
         isRequired: true,
         value:"",
         valid:false,
-        message:"should not exceed 1000"
+        message:"*should not exceed 1000 or lower than 0"
       },
       {
         id: 'height',
@@ -63,7 +63,7 @@ const bmiReferenceProps = {
         isRequired: true,
         value:"",
         valid:false,
-        message:"should not exceed 300"
+        message:"*should not exceed 300 or lower than 0"
       },
       {
         id: 'bmi',
@@ -94,7 +94,7 @@ const bmiReferenceProps = {
         isRequired: true,
         value:"",
         valid:false,
-        message:"need to input a first and last name (separated by a space)."
+        message:"*need to input a first and last name (separated by a space)."
       },
       {
         id: 'gender',
@@ -132,7 +132,7 @@ const bmiReferenceProps = {
         isRequired: true,
         value:"",
         valid:false,
-        message:"should not exceed 1000"
+        message:"*should not exceed 1000 or lower than 0"
       },
     ],
   };
