@@ -1,16 +1,16 @@
 import React from 'react'
-import  {bmiReferenceProps,headCircumferenceReferenceProps} from '../../assest/exampleData/exampleData'
 import InputElement from '../../component/Input/Input'
 import Button from '../../component/Button/Button'
 import {Form,FormElement} from './StyledForm'
+import PropTypes from 'prop-types'
 
 class OnlineSubmit extends React.Component{
 
     constructor(props){
         super(props)
         this.state={
-            bmiProps:bmiReferenceProps,
-            headProps:headCircumferenceReferenceProps,
+            bmiProps:props.bmi,
+            headProps:props.head,
             bmiPropsDisable:true,
             headPropsDisable:true,
             bmiIndex:null,
@@ -124,6 +124,11 @@ class OnlineSubmit extends React.Component{
             </Form>
         )
     }
+}
+
+OnlineSubmit.propTypes = {
+    bmi:PropTypes.object,
+    head:PropTypes.object
 }
 
 export default OnlineSubmit;

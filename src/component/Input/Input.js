@@ -1,5 +1,6 @@
 import React from 'react'
 import {StyledInput,StyledSelect,StyledLabel,ErrorMessage} from './StyledInputs'
+import PropTypes from 'prop-types'
 
 
 const input = (props) => {
@@ -45,5 +46,18 @@ const input = (props) => {
     )
 
 }
+
+input.propTypes = {
+    type:PropTypes.string.isRequired,
+    valid:PropTypes.bool.isRequired,
+    firstTime:PropTypes.bool,
+    isRequired:PropTypes.bool,
+    changed:PropTypes.func.isRequired,
+    value:PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
+    message:PropTypes.string,
+    option:PropTypes.arrayOf(PropTypes.object)
+}
+
+
 
 export default input;
