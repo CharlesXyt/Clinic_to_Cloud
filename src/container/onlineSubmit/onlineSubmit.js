@@ -65,7 +65,7 @@ class OnlineSubmit extends React.Component{
         return valid
     }
 
-    //handle the input change
+    //handle the inputchange
     inputChangeHandler = (event,typeId,formType) => {
         const changedValue = event.target.value
         const newProps = {...this.state[formType]}
