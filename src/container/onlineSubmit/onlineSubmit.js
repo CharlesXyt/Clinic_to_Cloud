@@ -111,11 +111,13 @@ class OnlineSubmit extends React.Component{
         return(
             <Form> 
                 <FormElement>
+                    <p><strong>{this.state.bmiProps.observationName} Form</strong></p>
                     {formBmi}
                     {this.state.bmiIndex ? <p>BMI: <span style={{fontSize:"16px",}}><strong>{this.state.bmiIndex + " kg/m2" }</strong></span></p> : null}
                     <Button disabled={this.state.bmiPropsDisable} onClick={() => this.buttonOnClick("bmiProps")}/>
                 </FormElement>
                 <FormElement>
+                    <p><strong>{this.state.headProps.observationName} Form</strong></p>
                     {formHead}
                     <Button disabled={this.state.headPropsDisable} onClick={() => this.buttonOnClick("headProps")}/>
                 </FormElement>
