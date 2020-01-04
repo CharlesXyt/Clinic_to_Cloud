@@ -55,7 +55,8 @@ input.propTypes = {
     changed:PropTypes.func.isRequired,
     value:PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
     message:PropTypes.string,
-    option:PropTypes.arrayOf(PropTypes.object)
+    option:PropTypes.arrayOf(PropTypes.object),
+    display:PropTypes.bool
 }
 
 
