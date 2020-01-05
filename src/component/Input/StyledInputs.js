@@ -28,7 +28,7 @@ const StyledLabel = styled.label`
 `
 
 const StyledSelect = styled.select`
-    width:80%; 
+    width:76%; 
     height:40px; 
     line-height:40px; 
     filter:alpha(opacity=0);
