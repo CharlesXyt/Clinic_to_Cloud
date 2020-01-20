@@ -1,17 +1,31 @@
 import React from 'react'
-import {StyledInput,StyledSelect,StyledLabel,ErrorMessage} from './StyledInputs'
+import {ErrorMessage} from './StyledInputs'
 import PropTypes from 'prop-types'
-import {TextField } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles';
+import {
+    TextField,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem,
+    FormHelperText
+} from '@material-ui/core'
+
+const useStyles = makeStyles({
+    select: {
+      width:"100%"
+    },
+  });
 
 
-const input = (props) => {
+
+function CustomInput(props){
     let inputElement = null
-
+    const classes = useStyles(props);
     //according to the type, return the inputElement
     switch(props.type){
         case 'textInput':
             inputElement = <TextField
-                                id="standard-textarea"
                                 label={props.displayName}
                                 onChange={props.changed}
                                 InputLabelProps={{
@@ -25,31 +39,45 @@ const input = (props) => {
         case 'select':
             const defaultOption = props.options.filter((el) => {return el.isDefault})[0].name
             inputElement = (
-                <StyledSelect value={props.value ? props.value : defaultOption} onChange={props.changed} required={props.isRequired}>
+                <FormControl required={props.isRequired}>
+                    <InputLabel>{props.displayName}</InputLabel>
+                    <Select
+                    className={classes.select}
+                    value={props.value ? props.value : defaultOption}
+                    onChange={props.changed}
+                    >
                     {props.options.map(el => {
                         return (
-                            <option 
+                            <MenuItem 
                                 key={el.name + "_"+ el.id} 
                                 value={el.name}
-                            >{el.name}</option>
+                            >{el.name}</MenuItem>
                     )})}
-                </StyledSelect>
+                    </Select>
+                    <FormHelperText>Required</FormHelperText>
+                </FormControl>
             )
             break
         case 'numberInput':
-            inputElement = <StyledInput placeholder={props.displayName} type="number" value={props.value} onChange={props.changed} required={props.isRequired}></StyledInput>
+            inputElement = <TextField
+                                label={props.displayName+"/"+props.unitOfMeasure}
+                                onChange={props.changed}
+                                InputLabelProps={{
+                                    type:"number", 
+                                    required:props.isRequired,
+                                    value:props.value
+                                }}
+                            />
             break
         default:
-            inputElement = <StyledInput placeholder={props.displayName} value={props.value} onChange={props.changed} required={props.isRequired}></StyledInput>
+            inputElement = <TextField/>
     }
 
     //decide if it needs to be displayed
     const result = props.display ? (<div style={{marginBottom:"5px"}}>
-                        <StyledLabel>{props.displayName}</StyledLabel>
-                        {inputElement}
-                        <span style={{fontSize:"16px"}}>{props.unitOfMeasure}</span>
-                        <ErrorMessage>{!props.valid && !props.firstTime ? props.message : null}</ErrorMessage>
-                    </div>) : null
+                                    {inputElement}
+                                    <ErrorMessage>{!props.valid && !props.firstTimeLoading ? props.message : null}</ErrorMessage>
+                                </div>) : null
     return (
         <div>
             {result}
@@ -58,7 +86,7 @@ const input = (props) => {
 
 }
 
-input.propTypes = {
+CustomInput.propTypes = {
     type:PropTypes.string.isRequired,
     valid:PropTypes.bool.isRequired,
     firstTime:PropTypes.bool,
@@ -72,4 +100,4 @@ input.propTypes = {
 
 
 
-export default input;
+export default CustomInput;

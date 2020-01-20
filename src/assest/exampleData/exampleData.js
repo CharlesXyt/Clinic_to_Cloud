@@ -10,6 +10,7 @@ const bmiReferenceProps = {
         isRequired: true,
         value:"",
         valid:false,
+        firstTimeLoading:true,
         message:"*need to input a first and last name (separated by a space)."
       },
       {
@@ -33,6 +34,7 @@ const bmiReferenceProps = {
         display: true,
         isRequired: false,
         value:"Male",
+        firstTimeLoading:true,
         valid:true
       },
       {
@@ -48,6 +50,7 @@ const bmiReferenceProps = {
         isRequired: true,
         value:"",
         valid:false,
+        firstTimeLoading:true,
         message:"*should not exceed 1000 or lower than 0"
       },
       {
@@ -63,6 +66,7 @@ const bmiReferenceProps = {
         isRequired: true,
         value:"",
         valid:false,
+        firstTimeLoading:true,
         message:"*should not exceed 300 or lower than 0"
       },
       {
@@ -77,6 +81,7 @@ const bmiReferenceProps = {
         display: false,
         isRequired: false,
         value:"",
+        firstTimeLoading:true,
         valid:true
       },
     ],
@@ -94,6 +99,7 @@ const bmiReferenceProps = {
         isRequired: true,
         value:"",
         valid:false,
+        firstTimeLoading:true,
         message:"*need to input a first and last name (separated by a space)."
       },
       {
@@ -117,6 +123,7 @@ const bmiReferenceProps = {
         display: true,
         isRequired: false,
         value:"Male",
+        firstTimeLoading:true,
         valid:true
       },
       {
@@ -132,6 +139,7 @@ const bmiReferenceProps = {
         isRequired: true,
         value:"",
         valid:false,
+        firstTimeLoading:true,
         message:"*should not exceed 1000 or lower than 0"
       },
     ],

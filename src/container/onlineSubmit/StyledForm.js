@@ -7,7 +7,7 @@ const Form = styled.div`
     margin-top:30px;
 `
 
-const FormElement = styled.div`
+const FormElement = styled.form`
     margin:20px auto;
     box-shadow: 0 2px 3px #ccc;
     border: 1px solid #eee;
@@ -16,7 +16,7 @@ const FormElement = styled.div`
     display:flex;
     width:30%;
     flex-flow:column nowrap;
-    justify-content:center;
+    justify-content:flex-start;
 `
 
 

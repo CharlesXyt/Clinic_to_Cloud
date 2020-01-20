@@ -1,6 +1,6 @@
 import React from 'react'
 import InputElement from '../../component/Input/Input'
-import Button from '../../component/Button/Button'
+import {Button} from "@material-ui/core"
 import {Form,FormElement} from './StyledForm'
 import PropTypes from 'prop-types'
 
@@ -9,20 +9,21 @@ class OnlineSubmit extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            bmiProps:props.bmi,
-            headProps:props.head,
-            bmiPropsDisable:true,
-            headPropsDisable:true,
+            bmiProps:"",
+            headProps:"",
+            bmiPropsDisable:"",
+            headPropsDisable:"",
             bmiIndex:null,
-            bmiPropsFirstTimeLoading:true,
-            headPropsFirstTimeLoading:true
         }
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this.setState({
-            bmiPropsFirstTimeLoading:true,
-            headPropsfirstTimeLoading:true
+            bmiProps:this.props.bmi,
+            headProps:this.props.head,
+            bmiPropsDisable:true,
+            headPropsDisable:true,
+            bmiIndex:null,
         })
     }
 
@@ -74,7 +75,8 @@ class OnlineSubmit extends React.Component{
                 return {
                     ...el,
                     value:changedValue,
-                    valid:this.checkValidity(el,changedValue)
+                    valid:this.checkValidity(el,changedValue),
+                    firstTimeLoading:false,
                 }
             }else{
                 return {
@@ -87,25 +89,23 @@ class OnlineSubmit extends React.Component{
             dataElements:newDataElements
         }
         const disableType = formType + "Disable"
-        const firstLoading = formType + "FirstTimeLoading"
         const isDisable = newDataElements.filter((el) => ! el.valid).length > 0 ? true : false
         this.setState({
             ...this.state,
             [formType]:newPropState,
             [disableType]:isDisable,
-            [firstLoading]:false
         })
     }
 
     render(){
         const formBmi = this.state.bmiProps.dataElements.map((el) => {
             return (
-                <InputElement firstTime={this.state.bmiPropsFirstTimeLoading} changed={(event) => this.inputChangeHandler(event,el.id,"bmiProps")} key={el.id} {...el}/>
+                <InputElement changed={(event) => this.inputChangeHandler(event,el.id,"bmiProps")} key={el.id} {...el}/>
             )
         })
         const formHead = this.state.headProps.dataElements.map((el) => {
             return (
-                <InputElement firstTime={this.state.headPropsFirstTimeLoading} changed={(event) => this.inputChangeHandler(event,el.id,"headProps")} key={el.id} {...el}/>
+                <InputElement changed={(event) => this.inputChangeHandler(event,el.id,"headProps")} key={el.id} {...el}/>
             )
         })
         return(
@@ -113,13 +113,13 @@ class OnlineSubmit extends React.Component{
                 <FormElement>
                     <p><strong>{this.state.bmiProps.observationName} Form</strong></p>
                     {formBmi}
-                    {this.state.bmiIndex && this.state.bmiPropsFirstTimeLoading ? <p>BMI: <span style={{fontSize:"16px",}}><strong>{this.state.bmiIndex + " kg/m2" }</strong></span></p> : null}
-                    <Button disabled={this.state.bmiPropsDisable} onClick={() => this.buttonOnClick("bmiProps")}/>
+                    {this.state.bmiIndex ? <p>BMI: <span style={{fontSize:"16px",}}><strong>{this.state.bmiIndex + " kg/m2" }</strong></span></p> : null}
+                    <Button  variant="contained" onClick={() => this.buttonOnClick("bmiProps")} disabled={this.state.bmiPropsDisable}>Submit</Button>
                 </FormElement>
                 <FormElement>
                     <p><strong>{this.state.headProps.observationName} Form</strong></p>
                     {formHead}
-                    <Button disabled={this.state.headPropsDisable} onClick={() => this.buttonOnClick("headProps")}/>
+                    <Button  variant="contained" onClick={() => this.buttonOnClick("headProps")} disabled={this.state.headPropsDisable}>Submit</Button>
                 </FormElement>
             </Form>
         )
