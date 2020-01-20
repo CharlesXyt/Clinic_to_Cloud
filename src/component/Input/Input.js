@@ -1,6 +1,7 @@
 import React from 'react'
 import {StyledInput,StyledSelect,StyledLabel,ErrorMessage} from './StyledInputs'
 import PropTypes from 'prop-types'
+import {TextField } from '@material-ui/core'
 
 
 const input = (props) => {
@@ -9,7 +10,17 @@ const input = (props) => {
     //according to the type, return the inputElement
     switch(props.type){
         case 'textInput':
-            inputElement = <StyledInput placeholder={props.displayName} type="text" required={props.isRequired} onChange={props.changed} value={props.value}></StyledInput>
+            inputElement = <TextField
+                                id="standard-textarea"
+                                label={props.displayName}
+                                onChange={props.changed}
+                                InputLabelProps={{
+                                    type:"text", 
+                                    required:props.isRequired,
+                                    value:props.value
+                                }}
+                            />
+            // <StyledInput placeholder= ></StyledInput>
             break
         case 'select':
             const defaultOption = props.options.filter((el) => {return el.isDefault})[0].name

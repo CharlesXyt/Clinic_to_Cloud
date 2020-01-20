@@ -1,16 +1,16 @@
 import React from 'react'
-import StyledButton from './StyledButton'
 import PropTypes from 'prop-types'
+import {Button} from "@material-ui/core"
 
 
-const Button = (props) => {
-    return <StyledButton onClick={props.onClick} disabled={props.disabled}>Submit</StyledButton>
+const styledButton = (props) => {
+    return <Button  variant="contained" onClick={props.onClick} disabled={props.disabled}>Submit</Button>
 } 
 
-Button.propTypes = {
+styledButton.propTypes = {
     onClick:PropTypes.func,
     disabled:PropTypes.bool
 }
 
 
-export default Button;
+export default styledButton;
